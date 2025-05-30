@@ -3,8 +3,8 @@
 #変動菌株の検出
 
 qiime feature-table filter-samples \
---i-table table.qza \
---m-metadata-file metadata_16S.txt \
+--i-table ../table.qza \
+--m-metadata-file ../metadata_16S.txt \
 --p-where "[Group] IN ('HFD','KES')" \
 --o-filtered-table table_Standard-Swab-akac.qza
 
