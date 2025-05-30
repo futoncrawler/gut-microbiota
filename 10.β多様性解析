@@ -1,0 +1,17 @@
+10
+
+#β多様性解析
+
+qiime diversity beta-group-significance \
+--i-distance-matrix weighted_unifrac_distance_matrix.qza \
+--m-metadata-file ../metadata_16S.txt \
+--m-metadata-column Group \
+--o-visualization weighted-unifrac-group-significance.qzv \
+--p-pairwise
+
+#wighted_unifrac_emperor.qzv
+・UniFrac距離に基づいて計算された距離行列の可視化結果 (主成分分析)
+
+
+#weighted-unifrac-group-significance.qzv
+・PERMANOVAで解析
