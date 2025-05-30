@@ -1,0 +1,40 @@
+1
+
+#16SrRNA遺伝子のリファレンスデータを選択
+・silva-138-99-515-806-nb-classifier.qza
+・gg_2022_10_backbone.v4.nb.qza
+
+cd ~/Downloads/250530
+
+conda activate qiime2-2023.2 #適切なverを選んで
+conda activate qiime2-amplicon-2025.4
+
+qiime tools import \
+--type 'SampleData[PairedEndSequencesWithQuality]' \
+--input-path fastq \
+--input-format CasavaOneEightSingleLanePerSampleDirFmt \
+--output-path demux.qza
+
+qiime demux summarize \
+--i-data demux.qza \
+--o-visualization demux.qzv
+
+#.qzvファイルはqiime2 view で確認
+・リード数の確認
+・Interactive Quality Plotのクオリティを確認。リードの先端と末端でクオリティが低下している箇所をメモ。(下の図の場合、Forwardが8~262、Reverseが8~188はクオリティが高い)
+
+・Interactive Quality Plotのクオリティが極端の低い場合、この後の解析を以下のようにシングルリードとして行う
+
+qiime tools import \
+--type 'SampleData[SequencesWithQuality]' \
+--input-path fastq \
+--input-format CasavaOneEightSingleLanePerSampleDirFmt \
+--output-path demux.qza
+
+qiime dada2 denoise-single \
+--p-trim-left 15 \
+--p-trunc-len 140 \
+--i-demultiplexed-seqs demux.qza \
+--o-table table.qza \
+--o-representative-sequences rep-seqs.qza \
+--o-denoising-stats stats-dada2.qza
