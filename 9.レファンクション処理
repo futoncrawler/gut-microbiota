@@ -1,0 +1,46 @@
+9
+
+＃レアファンクション処理(サンプル間のリード数を揃える)
+qiime diversity core-metrics-phylogenetic \
+--i-phylogeny rooted-tree.qza \
+--i-table table.qza \
+--p-sampling-depth 5000 \
+--m-metadata-file metadata_16S.txt \
+--output-dir core-metrics-results
+
+cd ~/Downloads/16SrRNAアンプリコン解析/20250514ochiai/core-metrics-results
+
+#Chao1を計算
+qiime diversity alpha \
+--i-table rarefied_table.qza \
+--p-metric chao1 \
+--o-alpha-diversity chao1_vector.qza
+
+#各種α多様性指数とメタデータの関連解析
+qiime diversity alpha-group-significance \
+--i-alpha-diversity observed_features_vector.qza \
+--m-metadata-file ../metadata_16S.txt \
+--o-visualization observed_features-group-significance.qzv
+
+qiime diversity alpha-group-significance \
+--i-alpha-diversity chao1_vector.qza \
+--m-metadata-file ../metadata_16S.txt \
+--o-visualization chao1-group-significance.qzv
+
+
+qiime diversity alpha-group-significance \
+--i-alpha-diversity shannon_vector.qza \
+--m-metadata-file ../metadata_16S.txt \
+--o-visualization shannon-group-significance.qzv
+
+qiime diversity alpha-group-significance \
+--i-alpha-diversity faith_pd_vector.qza \
+--m-metadata-file ../metadata_16S.txt \
+--o-visualization faith-pd-group-significance.qzv
+
+#結果の確認
+#observed_features-group-significance.qzvはASV数の結果
+#α多様性
+・Chao1 サンプル中に1または2リードのみ検出されたASVの数を加味した指標
+・Shannon 種の豊富さと均等度を考慮した指標　種数と均等度が多いほど高い数値となる
+・Faith PD ASV配列の分子系統樹を利用して、分子系統学上の距離を考慮した指標
