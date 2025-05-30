@@ -1,0 +1,23 @@
+4
+
+#代表配列の可視化
+qiime feature-table summarize \
+--i-table table.qza \
+--o-visualization table.qzv \
+--m-sample-metadata-file metadata_16S.txt
+
+qiime feature-table tabulate-seqs \
+--i-data rep-seqs.qza \
+--o-visualization rep-seqs.qzv
+
+#結果の確認
+Table.qzv
+・number of features ASVの数
+・Total frequency ASVに割り当てられたリードの総称
+・Frequency per sample サンプルごとのリード数の統計値
+・Median frequencyをメモ
+・Frequency per feature ASvごとのリード数の統計
+・サンプリング深度を検討
+
+rep-seqs.qzv
+・Featureの代表配列が得られる
