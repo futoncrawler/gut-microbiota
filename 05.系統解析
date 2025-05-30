@@ -2,7 +2,7 @@
 
 #系統解析
 qiime feature-classifier classify-sklearn \
---p-n-jobs -1 \
+--p-n-jobs -1 \#これは１のでは？
 --i-classifier classifier-V4.qza \
 --i-reads rep-seqs.qza \
 --o-classification taxonomy.qza
