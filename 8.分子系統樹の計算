@@ -1,0 +1,21 @@
+8
+
+#分子系統樹の計算
+
+qiime phylogeny align-to-tree-mafft-fasttree \
+--i-sequences rep-seqs.qza \
+--o-alignment aligned-rep-seqs.qza \
+--o-masked-alignment masked-aligned-rep-seqs.qza \
+--o-tree unrooted-tree.qza \
+--o-rooted-tree rooted-tree.qza
+
+#メタゲノム解析ではリード数が増えるほどASV数も増えるが、ある程度でカンストする。そのため、最大sample深度を決める。(サンプルごとのリード数の中央値が目安)
+qiime diversity alpha-rarefaction \
+--i-table table.qza \
+--i-phylogeny rooted-tree.qza \
+--p-max-depth 31629 \
+--m-metadata-file metadata_16S.txt \
+--o-visualization alpha-rarefaction_31629.qzv
+
+#結果の確認
+・リード数の深度を確認。飽和しているところを用いる
