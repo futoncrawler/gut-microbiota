@@ -19,23 +19,23 @@ qiime diversity alpha \
 #各種α多様性指数とメタデータの関連解析
 qiime diversity alpha-group-significance \
 --i-alpha-diversity observed_features_vector.qza \
---m-metadata-file ../metadata_16S.txt \
+--m-metadata-file ~/Downloads/gut-microbiome-analysis/metadata_16S.txt \#directoryを書く
 --o-visualization observed_features-group-significance.qzv
 
 qiime diversity alpha-group-significance \
 --i-alpha-diversity chao1_vector.qza \
---m-metadata-file ../metadata_16S.txt \
+--m-metadata-file ~/Downloads/gut-microbiome-analysis/metadata_16S.txt \
 --o-visualization chao1-group-significance.qzv
 
 
 qiime diversity alpha-group-significance \
 --i-alpha-diversity shannon_vector.qza \
---m-metadata-file ../metadata_16S.txt \
+--m-metadata-file ~/Downloads/gut-microbiome-analysis/metadata_16S.txt \
 --o-visualization shannon-group-significance.qzv
 
 qiime diversity alpha-group-significance \
 --i-alpha-diversity faith_pd_vector.qza \
---m-metadata-file ../metadata_16S.txt \
+--m-metadata-file ~/Downloads/gut-microbiome-analysis/metadata_16S.txt \
 --o-visualization faith-pd-group-significance.qzv
 
 #結果の確認
