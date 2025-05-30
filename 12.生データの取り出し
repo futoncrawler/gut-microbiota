@@ -1,0 +1,20 @@
+12
+
+生データの取り出し
+・β
+qiime tools export \
+--input-path weighted_unifrac_pcoa_results.qza \
+--output-path weighted_unifrac_pcoa_results
+
+・α
+qiime tools export \
+--input-path shannon_vector.qza \
+--output-path shannon_vector_results
+
+qiime tools export \
+--input-path chao1_vector.qza \
+--output-path chao1_vector_results
+
+qiime tools export \
+--input-path faith_pd_vector.qza \
+--output-path faith_pd_vector_results
