@@ -1,0 +1,20 @@
+#3
+
+time qiime dada2 denoise-paired \
+--verbose \
+--p-n-threads 0 \
+--p-trim-left-f 15 \
+--p-trim-left-r 15 \
+--p-trunc-len-f 240 \
+--p-trunc-len-r 240 \
+--i-demultiplexed-seqs demux.qza \
+--o-table table.qza \
+--o-representative-sequences rep-seqs.qza \
+--o-denoising-stats stats-dada2.qza 
+
+＃可視化
+qiime metadata tabulate \
+--m-input-file stats-dada2.qza \
+--o-visualization stats-dada2.qzv
+
+＃結果の確認
