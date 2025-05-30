@@ -5,7 +5,7 @@ time qiime dada2 denoise-paired \
 --p-n-threads 0 \
 --p-trim-left-f 15 \
 --p-trim-left-r 15 \
---p-trunc-len-f 240 \
+--p-trunc-len-f 240 \#一番いい切り方によって変更？
 --p-trunc-len-r 240 \
 --i-demultiplexed-seqs demux.qza \
 --o-table table.qza \
