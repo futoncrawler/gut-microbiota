@@ -1,0 +1,27 @@
+6
+
+＃占有率の計算
+＃分類階層ごとにリード数を分解
+
+for i in {2..7}; do \
+qiime taxa collapse \
+--i-table table.qza \
+--i-taxonomy taxonomy.qza \
+--p-level $i \
+--o-collapsed-table table-l${i}.qza \
+;done
+
+#上記のリード数を占有率に変換
+for i in {2..7}; do \
+qiime feature-table relative-frequency \
+--i-table table-l${i}.qza \
+--o-relative-frequency-table table-l${i}_relabn.qza \
+;done
+
+#可視化
+for i in {2..7}; do \
+qiime metadata tabulate \
+--m-input-file table-l${i}_relabn.qza \
+--o-visualization table-l${i}_relabn.qzv \
+;done
+
