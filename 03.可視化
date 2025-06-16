@@ -1,6 +1,6 @@
 #3
 
-time qiime dada2 denoise-paired \
+qiime dada2 denoise-paired \ #バージョンによってtime qiime?
 --verbose \
 --p-n-threads 0 \
 --p-trim-left-f 15 \
