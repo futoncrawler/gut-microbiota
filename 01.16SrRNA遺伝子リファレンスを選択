@@ -1,6 +1,6 @@
 1
 
-#16SrRNA遺伝子のリファレンスデータを選択
+#first you need to choose reference data that you would be using
 #reference data that can be used is also different regarding the version of qiime2 being used
 #・silva-138-99-515-806-nb-classifier.qza
 #・gg_2022_10_backbone.v4.nb.qza
